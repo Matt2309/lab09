@@ -8,6 +8,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -75,7 +79,13 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println("Print"); // NOPMD: allowed as this is just an exercise
+                try {
+                    final Path fPath = Paths.get(PATH);
+                    final List<String> lines = Files.readAllLines(fPath);
+                    lines.forEach(System.out::println);
+                } catch (IOException e1) {
+                    e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
             }
         });
     }
