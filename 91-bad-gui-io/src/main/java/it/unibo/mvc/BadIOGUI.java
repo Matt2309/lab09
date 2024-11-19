@@ -42,9 +42,11 @@ public class BadIOGUI {
         canvas.setLayout(new BorderLayout());
         canvas2.setLayout(new BoxLayout(canvas2, BoxLayout.LINE_AXIS));
         final JButton write = new JButton("Write on file");
+        final JButton read = new JButton("Read on file");
 
         canvas.add(canvas2, BorderLayout.CENTER);
         canvas2.add(write);
+        canvas2.add(read);
 
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,6 +69,13 @@ public class BadIOGUI {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
+            }
+        });
+
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.println("Print"); // NOPMD: allowed as this is just an exercise
             }
         });
     }
