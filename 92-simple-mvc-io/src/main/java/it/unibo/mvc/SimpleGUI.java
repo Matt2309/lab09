@@ -3,9 +3,12 @@ package it.unibo.mvc;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -21,6 +24,7 @@ public final class SimpleGUI {
      * 
      */
     public SimpleGUI() {
+        final Controller controller = new Controller();
         final JPanel canvas = new JPanel();
 
         canvas.setLayout(new BorderLayout());
@@ -32,6 +36,14 @@ public final class SimpleGUI {
 
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        btn.addActionListener((final ActionEvent e) -> {
+            try {
+                controller.saveContent(area.getText());
+            } catch (IOException e1) {
+                JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
     }
 
     private void display() {
