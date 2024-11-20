@@ -21,7 +21,7 @@ public final class SimpleGUI {
     private final JFrame frame = new JFrame();
     private static final Integer PROPORTION = 5;
     /**
-     * Creates a new BadIOGUI.
+     * Creates a new SimpleGUI.
      * 
      */
     public SimpleGUI() {
